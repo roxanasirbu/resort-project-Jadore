@@ -1,0 +1,83 @@
+<mat-sidenav-container>
+
+    <mat-sidenav #sidenav>
+      <app-sidenav-admin (closeSideNav)="sidenav.close()"></app-sidenav-admin>
+    </mat-sidenav>
+  
+    <mat-sidenav-content>
+      <app-header (SideNavigationToggle)="sidenav.toggle()"></app-header>
+      <app-navtabs-admin></app-navtabs-admin>
+  
+      <main>
+        <router-outlet></router-outlet>
+      </main>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+  <!-- mobile -->
+  <div fxShow="true" fxHide.gt-xs="true">
+  
+    <div>
+    <mat-card class="rooms-suites" fxLayout="column" >
+      <mat-card-header fxLayout="column" fxLayout="row" fxLayoutAlign="center center" class="title">
+        <h2>{{"Rooms" | translate}} &amp; {{"Suites" | translate}}</h2>
+      </mat-card-header> 
+      <mat-card-actions fxLayout="column" fxLayout="row" fxLayoutAlign="center center">
+        <button mat-raised-button color="primary" (click)="createRoom()">{{"addR" | translate}}</button>
+      </mat-card-actions>  
+    </mat-card>
+  </div>
+  <div>
+    <mat-card class="beach-houses" fxLayout="column"  fxFlex="22.5%"
+    fxFlex.md="30%"
+    fxFlex.sm="44%"
+    fxFlex.xs="100%">
+      <mat-card-header fxLayout="column" fxLayout="row" fxLayoutAlign="center center" class="title">
+        <h2>{{"Ballroom" | translate}}</h2>
+      </mat-card-header> 
+      <mat-card-actions fxLayout="column" fxLayout="row" fxLayoutAlign="center center">
+        <button mat-raised-button color="primary" (click)="AddHall()">{{"addB" | translate}}</button>
+      </mat-card-actions>  
+    </mat-card>
+  </div>
+  <div>
+    <mat-card class="restaurant" fxLayout="column" >
+      <mat-card-header fxLayout="column" fxLayout="row" fxLayoutAlign="center center" class="title">
+        <h2>{{"Restaurant" | translate}}</h2>
+      </mat-card-header> 
+      <mat-card-actions fxLayout="column" fxLayout="row" fxLayoutAlign="center center">
+        <button mat-raised-button color="primary" (click)="AddItem()">{{"addI" | translate}}</button>
+      </mat-card-actions>  
+    </mat-card>
+  </div>
+  </div>
+
+<!-- desktop -->
+<div fxShow="true" fxHide.lt-sm="true">
+  <div class="rooms-home-display" fxLayout.xs="column" fxLayoutWrap fxLayoutAlign="center">
+    <mat-card class="rooms-suites" fxFlex="30%;" fxFlex.sm="100%">
+      <mat-card-header fxLayout="column" fxLayout="row" fxLayoutAlign="center center">
+        <h2>{{"Rooms" | translate}} &amp; {{"Suites" | translate}}</h2>
+      </mat-card-header> 
+      <mat-card-actions fxLayout="column" fxLayout="row" fxLayoutAlign="center center">
+        <button mat-raised-button color="primary" (click)="createRoom()">{{"addR" | translate}}</button>
+      </mat-card-actions>  
+    </mat-card>
+    <mat-card class="beach-houses" fxFlex="30%;" fxFlex.sm="100%">
+      <mat-card-header fxLayout="column" fxLayout="row" fxLayoutAlign="center center">
+        <h2>{{"Ballroom" | translate}}</h2>
+      </mat-card-header> 
+      <mat-card-actions fxLayout="column" fxLayout="row" fxLayoutAlign="center center">
+        <button mat-raised-button color="primary" (click)="AddHall()">{{"addB" | translate}}</button>
+      </mat-card-actions>  
+    </mat-card>
+    <mat-card class="restaurant" fxFlex="30%;" fxFlex.sm="100%">
+      <mat-card-header fxLayout="column" fxLayout="row" fxLayoutAlign="center center">
+        <h2>{{"Restaurant" | translate}}</h2>
+      </mat-card-header> 
+      <mat-card-actions fxLayout="column" fxLayout="row" fxLayoutAlign="center center">
+        <button mat-raised-button color="primary" (click)="AddItem()">{{"addI" | translate}}</button>
+      </mat-card-actions>  
+    </mat-card>
+   
+  </div>
+</div>

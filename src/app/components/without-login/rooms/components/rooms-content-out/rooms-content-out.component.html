@@ -1,0 +1,124 @@
+<mat-sidenav-container>
+
+  <mat-sidenav-content>
+    <app-navtabs-out></app-navtabs-out>
+
+    <main>
+      <router-outlet></router-outlet>
+    </main>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+<body>
+  <!-- -------------------- Mobile ---------------------------- -->
+  <div fxShow="true" fxHide.gt-xs="true">
+    <div >
+      <div>
+
+        <ngx-slick-carousel class="carousel" 
+        #slickModal="slick-carousel" 
+        [config]="slideConfig" 
+        (init)="slickInit($event)"
+        (breakpoint)="breakpoint($event)"
+        (afterChange)="afterChange($event)"
+        (beforeChange)="beforeChange($event)">
+      <div ngxSlickItem *ngFor="let slide of slides" class="slide">
+      <img src="{{ slide.img }}" alt="" width="100%" appGalleryMobile>
+      </div>
+     </ngx-slick-carousel>
+      
+      </div>
+
+      <div class="wrapper">
+       
+        
+      </div>
+    </div>
+   
+
+    <div
+     class="mobile-price-settings ">
+      <label for="price">{{ room.price | currency }} </label>
+      <label style="font-weight: 100"> / {{ "night" | translate}} </label>
+    </div>
+
+    <div class="mobile-description-settings">
+      <label for="description">{{ room.description }}</label>
+    </div>
+
+   
+  </div>
+
+  <div fxShow="true" fxHide.lt-sm="true">
+    <!-- -------------------- Desktop ---------------------------- -->
+    <div class="row">
+      <div >
+        <div class="galleryPhotoSettings">
+       
+         
+          <mat-card>
+            <mat-card-header>
+                <div mat-card-avatar class="example-header-image"></div>
+               
+                </mat-card-header>
+             
+              <mat-card-content>
+              
+             
+            <ngx-slick-carousel class="carousel" 
+                #slickModal="slick-carousel" 
+                [config]="slideConfig" 
+                (init)="slickInit($event)"
+                (breakpoint)="breakpoint($event)"
+                (afterChange)="afterChange($event)"
+                (beforeChange)="beforeChange($event)">
+              <div ngxSlickItem *ngFor="let slide of slides" class="slide">
+              <img src="{{ slide.img }}" alt="" width="100%">
+              </div>
+             </ngx-slick-carousel>
+
+             <h1 class="font-settings">
+              {{ "room" | translate }} {{ room.number }} -
+              {{ room.title }}
+            </h1>
+
+        
+              <br />
+        
+            </mat-card-content>
+        </mat-card>
+       
+        </div>
+      </div>
+    
+        <mat-card > 
+          <div >
+           
+   
+        
+            <div class="column description-settings">
+              <h3 class="subtitle">{{"amenities" | translate}}</h3>
+              <ul class="room-fearures-list">
+                  <li *ngFor="let item of room.amenities"><i [class]="item.icon"></i>{{item.title}}</li>
+              </ul>
+          </div>
+              <br
+            />
+            <div class="column price-settings">
+              <label for="price">{{ room.price | currency }} </label>
+              <label style="font-weight: 100">
+                / {{ "night" | translate }}
+              </label>
+            </div>
+
+            <div class="column description-settings">
+              <label for="description">{{ room.description }}</label>
+            </div>
+          
+
+      </div>
+      </mat-card>
+    </div>
+    <mat-card> <br /><br /></mat-card>
+  </div>
+</body>
+<app-footer></app-footer>

@@ -1,0 +1,12 @@
+{
+  "projects": {
+    "default": "licenta-resort-project",
+    "license": "licenta-resort-project"
+  },
+  "targets": {},
+  "etags": {
+    "licenta-resort-project": {
+      "extensionInstances": {}
+    }
+  }
+}

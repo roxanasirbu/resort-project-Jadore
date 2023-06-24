@@ -1,0 +1,49 @@
+<mat-sidenav-container>
+
+    <mat-sidenav-content>
+      <app-navtabs-out></app-navtabs-out>
+  
+      <main>
+        <router-outlet></router-outlet>
+      </main>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+<mat-tab-group>
+    <mat-tab
+      *ngFor="let category of categories"
+      [label]="category.label.toUpperCase()"
+    >
+      <br />
+      <div fxLayout="row wrap">
+        <mat-card
+          fxFlex="22.5%"
+          fxFlex.md="30%"
+          fxFlex.sm="44%"
+          fxFlex.xs="100%"
+          *ngFor="let room of getItemsByCategorie(category.key)"
+          class="cardListItem card-space"
+        >
+          <div class="container-text-hovering">
+            <div>
+              <mat-card>
+              <img mat-card-image [src]="room.urlImage1" />
+              </mat-card>
+            </div>
+          
+          </div>
+          <mat-card-content>
+            <p fxLayoutAlign="left" class="price-settings">
+              {{ room.price | currency }}
+            </p>
+            <p fxLayoutAlign="left" class="title-settings">
+             {{room.description}}   
+            </p>
+  
+            
+  
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+  <app-footer></app-footer>

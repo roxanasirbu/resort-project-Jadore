@@ -1,0 +1,84 @@
+<mat-sidenav-container>
+
+  <mat-sidenav #sidenav>
+    <app-sidenav-admin (closeSideNav)="sidenav.close()"></app-sidenav-admin>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <app-header (SideNavigationToggle)="sidenav.toggle()"></app-header>
+    <app-navtabs-admin></app-navtabs-admin>
+
+    <main>
+      <router-outlet></router-outlet>
+    </main>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+<div class="container">
+  <ul class="responsive-table">
+    <li class="table-header">
+      <div class="col col-0">{{ "ITEM" | translate}}</div>
+      <div class="col col-2">{{ "RESERVATION DAY" | translate}}</div>
+      <div class="col col-3-3">{{ "PRICE" | translate}}</div>
+      <div class="col col-4-4">{{ "CANCEL" | translate}}</div>
+    </li>
+    <li *ngFor="let room of itemsOrder" class="table-row">
+      <img mat-card-image class="col col-1" data-label="Room Id" [src]="room.urlImage1" />
+      <div class="col col-2-2" data-label="Reservation Day">
+        {{ room.reservationDay }}
+      </div>
+      <div class="col col-3" data-label="Amount">
+        {{ room.price | currency}}
+      </div>
+      <div class="col col-4 actions" data-label="Actions">
+        <button
+          mat-button
+          matTooltip="Click to cancel the reservation of this room"
+          color="warn"
+          (click)="DeleteRoom(room.key)"
+        >
+          <mat-icon aria-label="Delete">delete</mat-icon>
+        </button>
+      </div>
+    </li>
+    <mat-card>
+      <ng-container>
+        <ng-template [ngIf]="getNumberOfPurchasedRooms() < 3">
+          <h3 class="text-settings">
+            {{ "Total:" }} {{ getTotal() | currency }}
+          </h3>
+        </ng-template>
+
+        <ng-template [ngIf]="getNumberOfPurchasedRooms() >= 3">
+          <h3 class="text-settings">
+            {{ "You have benefited from a 30% discount" }}
+          </h3>
+          <h3 class="text-settings">
+            {{ "Total Price After Discount:" }} {{ getTotal()  }}
+          </h3>
+        </ng-template>
+
+        <ng-template [ngIf]="getNumberOfPurchasedRooms() === 2">
+          <h3 class="text-settings">
+            {{ "Purchased rooms" }}
+          </h3>
+        </ng-template>
+      </ng-container>
+
+      <mat-card-actions fxLayoutAlign="space-between">
+        <button mat-raised-button class="button-settings" (click)="GoToRooms()">
+          {{ "CHECK ANOTHER OFFER" | translate}}
+        </button>
+        <button mat-raised-button class="button-settings" (click)="handlePayment()">
+          {{ "Pay"  | translate}}
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </ul>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<app-footer></app-footer>

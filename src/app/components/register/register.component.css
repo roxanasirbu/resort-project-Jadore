@@ -1,0 +1,17 @@
+.login-card{
+    /* background-image: url("../../../assets/images/image1.jpg"); */
+    background-image: linear-gradient(red, yellow, blue);
+    background-size:0dvi;
+}
+
+/* .container-fluid{
+    background-image: conic-gradient(red, yellow, green);
+} */
+
+.title{
+    margin-left: 500px;
+}
+
+.subtitle{
+    margin-left: 550px;
+}

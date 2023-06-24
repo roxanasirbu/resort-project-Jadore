@@ -1,0 +1,289 @@
+<mat-sidenav-container>
+
+  <mat-sidenav #sidenav>
+    <app-sidenav-list (closeSideNav)="sidenav.close()"></app-sidenav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <app-header (SideNavigationToggle)="sidenav.toggle()"></app-header>
+    <app-navtabs></app-navtabs>
+
+    <main>
+      <router-outlet></router-outlet>
+    </main>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+<body>
+  <!-- -------------------- Mobile ---------------------------- -->
+  <div fxShow="true" fxHide.gt-xs="true">
+    <div>
+      <div>
+
+        <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideConfig"
+          (init)="slickInit($event)" (breakpoint)="breakpoint($event)" (afterChange)="afterChange($event)"
+          (beforeChange)="beforeChange($event)">
+          <div ngxSlickItem *ngFor="let slide of slides" class="slide">
+            <img src="{{ slide.img }}" alt="" width="100%" appGalleryMobile>
+          </div>
+        </ngx-slick-carousel>
+
+      </div>
+
+      <div class="wrapper">
+
+
+      </div>
+    </div>
+
+
+    <div class="mobile-price-settings">
+      <label for="price">{{ room.price | currency }} </label>
+      <label style="font-weight: 100"> / {{ "night" | translate}} </label>
+    </div>
+
+    <div class="mobile-description-settings">
+      <label for="description">{{ room.description }}</label>
+    </div>
+
+    <div class="items-center">
+      <div class="row">
+        <form [formGroup]="myForm" (ngSubmit)="submitReservation()">
+          <mat-form-field>
+            <input class="datepicker" matInput [matDatepicker]="picker1" [matDatepickerFilter]="unavailableDays"
+              placeholder="Reservation Day" formControlName="date" [disabled]="!userState()" [min]="minDate" />
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker1></mat-datepicker>
+          </mat-form-field>
+          <button mat-raised-button color="primary" [disabled]="myForm.invalid" class="reservation-settings">
+            {{ "make-reservation" | translate }}
+          </button>
+        </form>
+
+<br>
+
+        <mat-card>
+          <h2 >{{"suggestion" | translate}}</h2>
+         <br>
+ 
+           <div fxLayout="row wrap" *ngIf="room.number!=1 && room.number!=2 " style="margin-left: 10%;">
+             <mat-card fxFlex="22.5%" fxFlex.md="30%" fxFlex.sm="34%" fxFlex.xs="60%" *ngFor="let room of suggestions"
+               class="cardListItem">
+               <mat-card-header></mat-card-header>
+               <div class="container-text-hovering">
+                 <div class="img">
+                   <mat-card>
+                     <img mat-card-image [src]="room.urlImage1" />
+                   </mat-card>
+                 </div>
+                 <div class="overlay">
+                   <button
+                 mat-raised-button
+                 class="details"
+                 (click)="goToRoom(room.number)"
+                
+               >
+                 <span> {{ "details" | translate }} </span>
+               </button>
+                 </div>
+               </div>
+               <mat-card-content>
+                 <p fxLayoutAlign="left" class="price-settings">
+                   {{ room.price | currency }} / {{ "night" | translate}}
+                 </p>
+                 <p fxLayoutAlign="left" class="title-settings">
+                   {{ room.title }}
+                 </p>
+   
+   
+               </mat-card-content>
+             </mat-card>
+           </div>
+     
+           <div fxLayout="row wrap" *ngIf="room.number==1 || room.number==2 " style="margin-left: 10%;">
+             
+             <mat-card fxFlex="5%" fxFlex.md="30%" fxFlex.sm="34%" fxFlex.xs="60%" *ngFor="let room of suggestionsListed"
+               class="cardListItem">
+               <mat-card-header></mat-card-header>
+              
+               <div class="container-text-hovering">
+                 <div class="img">
+                   <mat-card>
+                     <img mat-card-image [src]="room.urlImage1" />
+                   </mat-card>
+                 </div>
+                 <div class="overlay">
+                   <button
+                 mat-raised-button
+                 class="details"
+                 (click)="GoToRestaurant()"
+                
+               >
+                 <span> {{  "restaurantB" | translate }} </span>
+               </button>
+                 </div>
+               </div>
+               <mat-card-content>
+                 <p fxLayoutAlign="left" class="price-settings">
+                   {{ room.price | currency }} 
+                 </p>
+                 <p fxLayoutAlign="left" class="title-settings">
+                   {{ room.title }}
+                 </p>
+   
+   
+               </mat-card-content>
+             </mat-card>
+           </div>
+         </mat-card>
+      </div>
+    </div>
+  </div>
+
+  <div fxShow="true" fxHide.lt-sm="true">
+    <!-- -------------------- Desktop ---------------------------- -->
+    <div class="row">
+      <div >
+        <div class="galleryPhotoSettings">
+
+
+          <mat-card>
+
+            <mat-card-content>
+
+
+              <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideConfig"
+                (init)="slickInit($event)" (breakpoint)="breakpoint($event)" (afterChange)="afterChange($event)"
+                (beforeChange)="beforeChange($event)">
+                <div ngxSlickItem *ngFor="let slide of slides" class="slide">
+                  <img src="{{ slide.img }}" alt="" width="100%">
+                </div>
+              </ngx-slick-carousel>
+
+              <h1 class="font-settings">
+
+                {{ room.title }} - {{ room.price | currency }} / {{ "night" }}
+              </h1>
+
+
+              <br />
+
+            </mat-card-content>
+          </mat-card>
+
+        </div>
+      </div>
+
+      <mat-card>
+        <div>
+
+
+
+          <div class="column description-settings">
+            <h3 class="subtitle">{{"amenities" | translate}}</h3>
+            <ul class="room-fearures-list">
+              <li *ngFor="let item of room.amenities"><i [class]="item.icon"></i>{{item.title}}</li>
+            </ul>
+          </div>
+          <br />
+          <div class="column description-settings">
+            <label for="description">{{ room.description }}</label>
+          </div>
+          <div class="form">
+            <form [formGroup]="myForm" (ngSubmit)="submitReservation()">
+              <mat-form-field>
+                <input matInput [min]="minDate" [matDatepicker]="picker" [matDatepickerFilter]="unavailableDays"
+                  placeholder="Reservation Day" formControlName="date" [disabled]="!userState()" />
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+              <button mat-raised-button color="primary" [disabled]="myForm.invalid" class="reservation-settings">
+                {{ "make-reservation" | translate }}
+              </button>
+            </form>
+
+          </div>
+
+
+
+        </div>
+        <mat-card>
+       <h2 style="margin-left: 40%;">{{"suggestion" | translate}}</h2>
+      
+        <div fxLayout="row wrap" *ngIf="room.number!=1 && room.number!=2 " style="margin-left: 10%;">
+          <mat-card fxFlex="22.5%" fxFlex.md="30%" fxFlex.sm="44%" fxFlex.xs="100%" *ngFor="let room of suggestions"
+            class="cardListItem">
+            <mat-card-header></mat-card-header>
+            <div class="container-text-hovering">
+              <div class="img">
+                <mat-card>
+                  <img mat-card-image [src]="room.urlImage1" />
+                </mat-card>
+              </div>
+              <div class="overlay">
+                <button
+              mat-raised-button
+              class="details"
+              (click)="goToRoom(room.number)"
+             
+            >
+              <span> {{ "details" | translate }} </span>
+            </button>
+              </div>
+            </div>
+            <mat-card-content>
+              <p fxLayoutAlign="left" class="price-settings">
+                {{ room.price | currency }} / {{ "night" | translate }}
+              </p>
+              <p fxLayoutAlign="left" class="title-settings">
+                {{ room.title }}
+              </p>
+
+
+            </mat-card-content>
+          </mat-card>
+        </div>
+  
+        <div fxLayout="row wrap" *ngIf="room.number==1 || room.number==2 " style="margin-left: 10%;">
+          
+          <mat-card fxFlex="22.5%" fxFlex.md="30%" fxFlex.sm="44%" fxFlex.xs="100%" *ngFor="let room of suggestionsListed"
+            class="cardListItem">
+            <mat-card-header></mat-card-header>
+           
+            <div class="container-text-hovering">
+              <div class="img">
+                <mat-card>
+                  <img mat-card-image [src]="room.urlImage1" />
+                </mat-card>
+              </div>
+              <div class="overlay">
+                <button
+              mat-raised-button
+              class="details"
+              (click)="GoToRestaurant()"
+             
+            >
+              <span> {{ "restaurantB" | translate }} </span>
+            </button>
+              </div>
+            </div>
+            <mat-card-content>
+              <p fxLayoutAlign="left" class="price-settings">
+                {{ room.price | currency }} 
+              </p>
+              <p fxLayoutAlign="left" class="title-settings">
+                {{ room.title }}
+              </p>
+
+
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </mat-card>
+
+      </mat-card>
+    </div>
+    <mat-card> <br /><br /></mat-card>
+  </div>
+</body>
+<app-footer></app-footer>

@@ -1,0 +1,153 @@
+<mat-sidenav-container>
+
+  <mat-sidenav #sidenav>
+    <app-sidenav-list (closeSideNav)="sidenav.close()"></app-sidenav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <app-header (SideNavigationToggle)="sidenav.toggle()"></app-header>
+    <app-navtabs></app-navtabs>
+
+    <main>
+      <router-outlet></router-outlet>
+    </main>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+ <!-- Mobile -->
+ <div fxShow="true" fxHide.gt-xs="true">
+  <mat-tab-group>
+    <mat-tab
+      *ngFor="let category of categories"
+      [label]="category.label.toUpperCase()"
+    >
+      <br />
+      <div fxLayout="row wrap">
+        <mat-card
+        fxFlex="22.5%"
+        fxFlex.md="30%"
+        fxFlex.sm="44%"
+        fxFlex.xs="100%"
+          *ngFor="let room of getRoomsByCategorie(category.key)"
+          class="cardListItem card-space"
+        >
+          <div class="container-text-hovering">
+            <div class="img" >
+              <mat-card>
+              <img mat-card-image [src]="room.urlImage1" />
+            </mat-card>
+            </div>
+            <div class="overlay">
+              <button
+                mat-raised-button
+                class="button-position-overlay"
+                (click)="goToRoom(room.key)"
+                
+              >
+                <span>{{ "room-details" | translate }}</span>
+              </button>
+            </div>
+          </div>
+          <mat-card-content>
+            <p fxLayoutAlign="left" class="price-settings">
+              {{ room.price | currency }} / {{ "night" | translate }}
+            </p>
+            <p fxLayoutAlign="left" class="title-settings">
+             {{ room.title }}
+            </p>
+  
+            <button
+              mat-raised-button
+              class="details"
+              (click)="goToRoom(room.key)"
+              *ngIf="!existItemInBasket(room.key)"
+            >
+              <span> {{ "details" | translate }} </span>
+            </button>
+  
+            <p
+              *ngIf="existItemInBasket(room.key)"
+              fxLayoutAlign="left"
+              class="in-progress-settings"
+            >
+              {{ "reservation-progress" | translate }}
+            </p>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+  </div>
+
+  <div fxShow="true" fxHide.lt-sm="true">
+    <!-- -------------------- Desktop ---------------------------- -->
+
+    <mat-tab-group>
+      <mat-tab
+        *ngFor="let category of categories"
+        [label]="category.label.toUpperCase()"
+      >
+        <br />
+        <div fxLayout="column">
+          <mat-card
+            fxFlex="22.5%"
+            fxFlex.md="30%"
+            fxFlex.sm="44%"
+            fxFlex.xs="100%"
+            *ngFor="let room of getRoomsByCategorie(category.key)"
+            class="cardListItem card-space"
+          >
+            <div class="container-text-hovering">
+              <div>
+                <mat-card>
+                <img mat-card-image [src]="room.urlImage1" />
+                </mat-card>
+              </div>
+              <div class="overlay">
+                <button
+                  mat-raised-button
+                  class="button-position-overlay"
+                  (click)="goToRoom(room.key)"
+                  *ngIf="!existItemInBasket(room.key)"
+                >
+                  <span>{{ "room-details" | translate }}</span>
+                </button>
+              </div>
+            </div>
+            <mat-card-content>
+              <p fxLayoutAlign="left" class="price-settings">
+                {{ room.price | currency }} / {{ "night" | translate  }}
+              </p>
+              <p fxLayoutAlign="left" class="title-settings">
+               {{ room.title }}
+              </p>
+    
+              <button
+                mat-raised-button
+                class="details"
+                (click)="goToRoom(room.key)"
+                *ngIf="!existItemInBasket(room.key)"
+              >
+                <span> {{ "details" | translate}} </span>
+              </button>
+    
+              <p
+                *ngIf="existItemInBasket(room.key)"
+                fxLayoutAlign="left"
+                class="in-progress-settings"
+              >
+                {{ "in-progress" | translate }}
+              </p>
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+
+  </div>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <app-footer></app-footer>

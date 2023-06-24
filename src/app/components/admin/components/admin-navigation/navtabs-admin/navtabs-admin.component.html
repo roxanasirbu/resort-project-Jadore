@@ -1,0 +1,47 @@
+<div class="navtabs-container">
+    <span class="toolbar-flex"></span>
+      <nav mat-tab-nav-bar mat-tab-nav-bar fxFlex fxLayout fxLayoutAlign="center center" [tabPanel]="tabPanel">
+      
+
+         <a mat-tab-link routerLink="/admin-users"
+         routerLinkActive #adminusers="routerLinkActive"
+         [active]="adminusers.isActive">
+         {{"Users" | translate}}
+         </a>
+    
+         <a mat-tab-link routerLink="/admin-dash"
+         routerLinkActive #admindash="routerLinkActive"
+         [active]="admindash.isActive">
+         {{"Home" | translate}}
+         </a>
+
+         <a mat-tab-link routerLink="/admin-rooms"
+         routerLinkActive #accomodation="routerLinkActive"
+         [active]="accomodation.isActive">
+         {{"Accomodation" | translate}}
+         </a>
+
+
+    
+         <a mat-tab-link routerLink="/admin-restaurant"
+         routerLinkActive #restaurant="routerLinkActive"
+         [active]="restaurant.isActive">
+         {{"Restaurant" | translate}}
+         </a>
+    
+        
+    
+         <a mat-tab-link routerLink="/admin-halls"
+         routerLinkActive #celebrations="routerLinkActive"
+         [active]="celebrations.isActive">
+         {{"Ballroom" | translate}}
+         </a>
+    
+         <span class="toolbar-flex"></span>
+      </nav>
+      <mat-tab-nav-panel #tabPanel></mat-tab-nav-panel>
+    </div>
+    
+    
+    
+    

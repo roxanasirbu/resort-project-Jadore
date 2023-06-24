@@ -1,0 +1,133 @@
+<mat-sidenav-container>
+
+  <mat-sidenav #sidenav>
+    <app-sidenav-admin (closeSideNav)="sidenav.close()"></app-sidenav-admin>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <app-header (SideNavigationToggle)="sidenav.toggle()"></app-header>
+    <app-navtabs-admin></app-navtabs-admin>
+
+    <main>
+      <router-outlet></router-outlet>
+    </main>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+<div *ngIf="noReservations()" >
+<mat-card fxShow="true"
+fxHide.lt-sm="true"
+class="centered-1">
+
+<div class="texting">
+  <h1>{{ "no-reservations" | translate }}</h1>
+</div>
+
+</mat-card>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<app-footer></app-footer>
+</div>
+<!-- <mat-card
+  *ngIf="noReservations()"
+  fxShow="true"
+  fxHide.lt-sm="true"
+  class="centered-1"
+>
+ 
+  
+  <div class="texting">
+    <h1>{{ "no-reservations" | translate }}</h1>
+  
+  </div>
+ 
+</mat-card> -->
+
+
+<!-- <mat-card
+  *ngIf="noReservations()"
+  fxShow="true"
+  fxHide.gt-xs="true"
+  class="centered-2"
+>
+  <div class="texting">
+    <h1>{{ "no-reservations" | translate  }}</h1>
+    <br />
+    <br />
+    <br />
+    <br />
+  </div>
+  <br />
+  <br />
+  <br />
+  <br />
+</mat-card> -->
+<div *ngIf="!noReservations()">
+<div fxLayout="column" [ngClass.gt-xs]="'margins-settings'" >
+  <mat-card
+    *ngFor="let room of ownedRooms"
+    class="organization"
+    [ngClass]="!checkIfAvailable(room.reservationDay) ? 'super-opacity' : ''"
+  >
+    <mat-card-title-group>
+      <mat-card-title>
+        <div style="display: flex">
+          <img mat-card-image [src]="room.urlImage1" class="image-settings" />
+
+          <div
+            class="paragraphs-settings"
+            [ngClass.lt-sm]="'paragraphs-mobile-settings'"
+          >
+            <p class="title-settings">
+            {{  room.title }}
+            </p>
+            <p class="reservationDay-settings">
+              {{ "reservedDay" | translate }}: {{ room.reservationDay }}
+            </p>
+            <p
+              *ngIf="!checkIfAvailable(room.reservationDay)"
+              class="status-settings"
+            >
+              {{ "available" | translate }}
+            </p>
+            <p
+              *ngIf="checkIfAvailable(room.reservationDay)"
+              class="status-settings"
+              style="color: red"
+            >
+              {{ "notAv" | translate }}
+            </p>
+          </div>
+        </div>
+      </mat-card-title>
+
+      <div fxShow="true" fxHide.lt-sm="true">
+        <p class="price-settings">
+          {{ room.price | currency }}
+        </p>
+      </div>
+    </mat-card-title-group>
+  </mat-card>
+ 
+</div>
+<app-footer></app-footer>
+</div>

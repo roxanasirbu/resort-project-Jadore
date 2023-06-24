@@ -1,0 +1,62 @@
+<mat-sidenav-container>
+
+    <mat-sidenav #sidenav>
+      <app-sidenav-admin (closeSideNav)="sidenav.close()"></app-sidenav-admin>
+    </mat-sidenav>
+  
+    <mat-sidenav-content>
+      <app-header (SideNavigationToggle)="sidenav.toggle()"></app-header>
+      <app-navtabs-admin></app-navtabs-admin>
+  
+      <main>
+        <router-outlet></router-outlet>
+      </main>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+<div class="container">
+    <ul class="responsive-table">
+    
+
+      <br />
+      <br />
+  
+      <li *ngFor="let room of rooms" class="table-row">
+        <div class="col col-1" data-label="Id">{{ room.key }}</div>
+        <div class="col col-2" data-label="Name">
+          {{ room.title.toUpperCase() }}
+        </div>
+        <div class="col col-3" data-label="Tax">
+          {{ room.price | currency}}
+        </div>
+        <div class="col col-4 actions" data-label="Edit/Delete">
+          <button
+            mat-button
+            matTooltip="Click to edit this hall"
+            color="primary"
+            (click)="Edit(room)"
+          >
+            <mat-icon aria-label="Edit">draw</mat-icon>
+          </button>
+          <button
+            mat-button
+            matTooltip="Click to delete this hall"
+            color="warn"
+            (click)="Delete(room)"
+          >
+            <mat-icon aria-label="Delete">delete</mat-icon>
+          </button>
+        </div>
+      </li>
+    </ul>
+    <div>
+      <button
+        mat-raised-button
+        (click)="backToHall()"
+        class="button-settings"
+        style="margin-top: 30px"
+      >
+        {{ "ViewB" | translate }}
+      </button>
+    </div>
+  </div>
+  

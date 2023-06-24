@@ -1,0 +1,23 @@
+.logo-container {
+    width: 100%;
+  }
+  
+  /* footer-logo{
+    width: 30%;
+    height: 5px;
+  } */
+  
+  mat-toolbar {
+    height: 100px;
+    background-color: #fff !important;
+  }
+  
+  .mat-icon-button {
+    color: black;
+  }
+  
+  .column{
+    float: left;
+
+  }
+  

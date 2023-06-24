@@ -1,0 +1,64 @@
+<div class="navtabs-container">
+    <span class="toolbar-flex"></span>
+      <nav mat-tab-nav-bar mat-tab-nav-bar fxFlex fxLayout fxLayoutAlign="center center" [tabPanel]="tabPanel">
+        <a mat-tab-link routerLink="/"
+         routerLinkActive #home="routerLinkActive"
+         >
+        {{"Home" | translate}}
+         </a>
+    
+         <a mat-tab-link routerLink="/login"
+         routerLinkActive #login="routerLinkActive"
+         [active]="login.isActive">
+         {{"logIn" | translate}}
+         </a>
+
+         <a mat-tab-link routerLink="/rooms-out"
+         routerLinkActive #rooms="routerLinkActive"
+         [active]="rooms.isActive">
+         {{"Accomodation" | translate}}
+         </a>
+
+         <a mat-tab-link routerLink="/halls-out"
+         routerLinkActive #halls="routerLinkActive"
+         [active]="halls.isActive">
+         {{"Ballroom" | translate}}
+         </a>
+
+         <a mat-tab-link routerLink="/restaurant-out"
+         routerLinkActive #restaurant="routerLinkActive"
+         [active]="restaurant.isActive">
+        {{ "Restaurant" | translate }}
+         </a>
+<a >
+  <button
+  mat-menu-item
+  [matMenuTriggerFor]="languageMenu"
+  (touch)="showLanguageMenu(languageMenuTrigger)"
+  #languageMenuTrigger="matMenuTrigger"
+>
+  {{ "language" | translate }}
+</button>
+<mat-menu #languageMenu="matMenu">
+  <button
+  mat-menu-item
+  *ngFor="let language of translate.getLangs()"
+  (click)="translateIn(language)"
+  (click)="$event.stopPropagation()"
+  class="lang-button"
+>
+  <mat-icon>short_text</mat-icon>
+  {{ language.toUpperCase() }}
+</button>
+</mat-menu>
+</a>
+
+    
+         <span class="toolbar-flex"></span>
+      </nav>
+      <mat-tab-nav-panel #tabPanel></mat-tab-nav-panel>
+    </div>
+    
+    
+    
+    

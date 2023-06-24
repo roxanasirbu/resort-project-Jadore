@@ -1,0 +1,39 @@
+<div class="navtabs-container">
+    <span class="toolbar-flex"></span>
+      <nav mat-tab-nav-bar mat-tab-nav-bar fxFlex fxLayout fxLayoutAlign="center center" [tabPanel]="tabPanel">
+        <a mat-tab-link routerLink="/home"
+         routerLinkActive #home="routerLinkActive"
+         [active]="home.isActive">
+         {{"Home" | translate}}
+         </a>
+
+         <a mat-tab-link routerLink="/rooms"
+         routerLinkActive #accomodation="routerLinkActive"
+         [active]="accomodation.isActive">
+         {{"Accomodation" | translate}}
+         </a>
+    
+         <a mat-tab-link routerLink="/restaurant"
+         routerLinkActive #foodandbeverage="routerLinkActive"
+         [active]="foodandbeverage.isActive">
+         {{"Restaurant" | translate}}
+         </a>
+    
+        
+    
+         <a mat-tab-link routerLink="/halls"
+         routerLinkActive #celebrations="routerLinkActive"
+         [active]="celebrations.isActive">
+         {{"Ballroom" | translate}}
+         </a>
+
+         
+    
+         <span class="toolbar-flex"></span>
+      </nav>
+      <mat-tab-nav-panel #tabPanel></mat-tab-nav-panel>
+    </div>
+    
+    
+    
+    

@@ -1,0 +1,124 @@
+.mat-card {
+    border-radius: 5px;
+    align-self: baseline;
+    margin-bottom: 6px;
+    margin-right: 4px;
+  }
+  /* ----------------- Hovering Image -------------------------*/
+  
+  .container-text-hovering {
+    position: relative;
+  }
+  
+  .container-text-hovering:hover .overlay {
+    bottom: 0;
+    height: 100%;
+  }
+  
+  .button-position-overlay {
+    background-color: black;
+    color: white;
+    text-align: center;
+    transition: all 0.5s;
+    cursor: pointer;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+  }
+  
+  .button-position-overlay:hover {
+    border: solid 1.5px white;
+  }
+  
+  .overlay {
+    opacity: 0.8;
+    position: absolute;
+    width: calc(100% + 32px);
+    margin: 0 -16px 17px -16px;
+    bottom: 100%;
+    height: 0;
+    background-color: black;
+    overflow: hidden;
+    transition: 0.5s ease;
+  }
+  
+  /* ----------------- Hovering Image -------------------------*/
+  
+  .title-settings {
+    font-weight: 500;
+    font-size: medium;
+    letter-spacing: 1px;
+    margin-left: 0.1cm;
+  }
+  
+  .price-settings {
+    font-weight: 500;
+    font-size: large;
+    letter-spacing: 1px;
+    margin-left: 0.1cm;
+  }
+  
+  .in-progress-settings {
+    font-weight: 400;
+    font-size: medium;
+    letter-spacing: 0.5px;
+    margin-top: 20px;
+    color: red;
+    border-bottom: 13px solid transparent;
+  }
+  
+  .details {
+    background-color: white;
+    border: 1.5px solid black;
+    color: black;
+    box-shadow: none;
+    text-align: center;
+    transition: all 0.5s;
+    cursor: pointer;
+  }
+  
+  .details span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+  }
+  
+  .details span:after {
+    content: "\00bb";
+    font-size: 26px;
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+  }
+  
+  .details:hover span {
+    padding-right: 25px;
+    padding-top: 3px;
+  }
+  
+  .details:hover span:after {
+    opacity: 1;
+    right: 0;
+  }
+  
+  .card-space {
+    border-radius: 5px;
+    margin-bottom: 15px;
+    margin-top: 15px;
+    margin-left: 15px;
+    margin-right: 15px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  }
+  
+  .card-space:hover {
+    box-shadow: rgba(0, 0, 0, 0.67) 0px 5px 30px 3px;
+  }
+  
+  .div-space {
+    margin-bottom: 30px;
+  }
+  

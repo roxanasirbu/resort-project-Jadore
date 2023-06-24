@@ -1,0 +1,92 @@
+<mat-sidenav-container>
+
+    <mat-sidenav-content>
+        <app-navtabs-out></app-navtabs-out>
+
+        <main>
+            <router-outlet></router-outlet>
+        </main>
+    </mat-sidenav-content>
+</mat-sidenav-container>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<!-- Mobile -->
+<div fxShow="true" fxHide.gt-xs="true">
+    <br>
+    <br>
+    <br>
+    <div class="container-fluid">
+        <div class="row mt-5">
+            <div class="col"></div>
+            <div class="col-9">
+                <div class="card shadow">
+                    <div class="card-body">
+                        <form>
+                            <div class="mb-3">
+                                <h4 class="text-danger text-muted">Welcome</h4>
+                            </div>
+                            <div class="mb-3">
+                                <p class="text-muted">Link has sent on your registered email. Please verify it.</p>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col"></div>
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+</div>
+
+<div fxShow="true" fxHide.lt-sm="true">
+    <!-- -------------------- Desktop ---------------------------- -->
+    <br>
+    <br>
+    <br>
+    <div class="container-fluid">
+        <div class="row mt-5">
+            <div class="col"></div>
+            <div class="col-4">
+                <div class="card shadow">
+                    <div class="card-body">
+                        <form>
+                            <div class="mb-3">
+                                <h4 class="text-danger text-muted">Welcome</h4>
+                            </div>
+                            <div class="mb-3">
+                                <p class="text-muted">Link has sent on your registered email. Please verify it.</p>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col"></div>
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    
+</div>
+<app-footer></app-footer>

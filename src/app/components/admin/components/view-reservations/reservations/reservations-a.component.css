@@ -1,0 +1,103 @@
+.image-settings {
+    width: 150px;
+    height: 100px;
+    margin-left: 10px;
+  }
+  
+  .mat-card-image:first-child {
+    margin-top: 10px;
+  }
+  
+  .paragraphs-settings {
+    margin-left: 40px;
+    margin-top: 15px;
+    letter-spacing: 1px;
+  }
+  
+  .paragraphs-mobile-settings {
+    margin-left: 40px;
+    margin-top: 5px;
+    letter-spacing: 1px;
+  }
+  
+  .title-settings {
+    font-size: 20px;
+  }
+  
+  .price-settings {
+    font-size: 25px;
+    margin-top: 15px;
+    margin-right: 10px;
+    font-weight: 500;
+  }
+  
+  .reservationDay-settings {
+    font-size: 15px;
+    font-weight: 450;
+    margin-top: 15px;
+  }
+  
+  .status-settings {
+    font-size: 15px;
+    font-weight: 450;
+    font-style: italic;
+    margin-top: 15px;
+  }
+  
+  .organization {
+    border-radius: 5px;
+    margin-bottom: 15px;
+    margin-top: 15px;
+    margin-left: 15px;
+    margin-right: 15px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    opacity: 0.6;
+  }
+  
+  .organization:hover {
+    opacity: 1;
+  }
+  
+  .super-opacity {
+    opacity: 1;
+  }
+  
+  .super-opacity:hover {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 30px;
+  }
+  
+  .margins-settings {
+    margin-left: 10%;
+    margin-right: 10%;
+  }
+  
+  h1 {
+    font-size: 27px;
+    font-weight: 400;
+    margin-top: 15px;
+    letter-spacing: 0.2px;
+    margin-right: 25px;
+  }
+  
+  .texting {
+    text-align: center;
+    margin-top: 26px;
+  }
+  
+  .centered-1 {
+
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid black;
+  }
+  
+  .centered-2 {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid black;
+  }
+  

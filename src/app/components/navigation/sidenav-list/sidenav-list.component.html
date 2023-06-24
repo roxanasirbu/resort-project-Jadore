@@ -1,0 +1,54 @@
+<mat-nav-list class="sidenav-list">
+    <a mat-list-item routerLink="/rooms" (click)="onToggleClose()">
+      <mat-icon>hotel</mat-icon>
+      <span>{{"Accomodation" | translate}}</span>
+    </a>
+
+    <a mat-list-item routerLink="/orders" (click)="onToggleClose()">
+      <mat-icon>bed</mat-icon>
+      <span>{{"ord" | translate}}</span>
+    </a>
+
+    <a mat-list-item routerLink="/reservations" (click)="onToggleClose()">
+      <mat-icon>luggage</mat-icon>
+      <span>{{"reserv" | translate}}</span>
+    </a>
+
+    <a mat-list-item routerLink="/halls" (click)="onToggleClose()">
+      <mat-icon>celebration</mat-icon>
+      <span>{{"Ballroom" | translate}}</span>
+    </a>
+    <a mat-list-item routerLink="/restaurant" (click)="onToggleClose()">
+      <mat-icon>restaurant_menu</mat-icon>
+      <span> {{"Restaurant" | translate}}</span>
+    </a>
+
+ 
+      <button
+      mat-menu-item
+      [matMenuTriggerFor]="languageMenu"
+      (touch)="showLanguageMenu(languageMenuTrigger)"
+      #languageMenuTrigger="matMenuTrigger"
+    >
+      <mat-icon>stream</mat-icon>
+      {{ "language" | translate }}
+    </button>
+    <mat-menu #languageMenu="matMenu">
+      <button
+      mat-menu-item
+      *ngFor="let language of translate.getLangs()"
+      (click)="translateIn(language)"
+      (click)="$event.stopPropagation()"
+      class="lang-button"
+    >
+      <mat-icon>short_text</mat-icon>
+      {{ language.toUpperCase() }}
+    </button>
+    </mat-menu>
+    
+
+    <a mat-list-item routerLink="/login" (click)="onLogout()">
+      <mat-icon>logout</mat-icon>
+      <span>{{"logout" | translate}}</span>
+    </a>
+  </mat-nav-list>

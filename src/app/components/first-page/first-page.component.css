@@ -1,0 +1,36 @@
+.md-card-wrapper {
+    position: relative;
+      width: 40%;
+  }
+.md-card-wrapper.span {
+    position: absolute;
+    top: 20%;
+    right: 20%;
+    color: white;
+    font-size: 34px;
+}
+
+.slick-slider {
+  width: 88%;
+  margin: auto;
+  background: rgb(14, 13, 13);
+}
+
+body .slick-prev, 
+body .slick-next {
+  height: 45px;
+  width: 40px;
+  background: grey !important;
+  z-index: 100;
+}
+
+
+.title{
+  margin-left: 500px;
+
+}
+
+.subtitle{
+  margin-left: 500px;
+}
+

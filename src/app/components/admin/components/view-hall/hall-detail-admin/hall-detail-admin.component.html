@@ -1,0 +1,182 @@
+<mat-sidenav-container>
+
+    <mat-sidenav #sidenav>
+      <app-sidenav-admin (closeSideNav)="sidenav.close()"></app-sidenav-admin>
+    </mat-sidenav>
+  
+    <mat-sidenav-content>
+      <app-header (SideNavigationToggle)="sidenav.toggle()"></app-header>
+      <app-navtabs-admin></app-navtabs-admin>
+  
+      <main>
+        <router-outlet></router-outlet>
+      </main>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+  <body>
+    <!-- -------------------- Mobile ---------------------------- -->
+    <div fxShow="true" fxHide.gt-xs="true">
+      <div >
+        <div>
+  
+          <ngx-slick-carousel class="carousel" 
+          #slickModal="slick-carousel" 
+          [config]="slideConfig" 
+          (init)="slickInit($event)"
+          (breakpoint)="breakpoint($event)"
+          (afterChange)="afterChange($event)"
+          (beforeChange)="beforeChange($event)">
+        <div ngxSlickItem *ngFor="let slide of slides" class="slide">
+        <img src="{{ slide.img }}" alt="" width="100%" appGalleryMobile>
+        </div>
+       </ngx-slick-carousel>
+        
+        </div>
+  
+        <div class="wrapper">
+         
+          
+        </div>
+      </div>
+     
+  
+      <div
+       class= "mobile-price-settings"
+      >
+        <label for="price">{{ item.price | currency }} </label>
+        <label style="font-weight: 100"> / {{ "tax" | translate }} </label>
+      </div>
+  
+      <div class="mobile-description-settings">
+        <label for="description">{{ item.description }}</label>
+      </div>
+  
+      <div class="items-center">
+        <div class="row">
+          <form [formGroup]="myForm" (ngSubmit)="submitReservation()">
+            <mat-form-field>
+              <input
+                matInput
+                [matDatepicker]="picker1"
+                [matDatepickerFilter]="unavailableDays"
+                placeholder="Meeting Day"
+                formControlName="date"
+                [disabled]="!userState()"
+                [min]="minDate"
+              />
+              <mat-datepicker-toggle
+                matSuffix
+                [for]="picker"
+              ></mat-datepicker-toggle>
+              <mat-datepicker #picker1></mat-datepicker>
+            </mat-form-field>
+            <button
+              mat-raised-button
+              color="primary"
+              [disabled]="myForm.invalid"
+              class="reservation-settings"
+            >
+              {{ "set" | translate  }}
+            </button>
+          </form>
+  
+         
+        </div>
+      </div>
+    </div>
+  
+    <div fxShow="true" fxHide.lt-sm="true">
+      <!-- -------------------- Desktop ---------------------------- -->
+      <div class="row">
+        <div >
+          <div class="galleryPhotoSettings">
+         
+           
+            <mat-card>
+              <!-- <mat-card-header>
+                  <div mat-card-avatar class="example-header-image"></div>
+                 
+                  </mat-card-header> -->
+               
+                <mat-card-content>
+                
+               
+              <ngx-slick-carousel class="carousel" 
+                  #slickModal="slick-carousel" 
+                  [config]="slideConfig" 
+                  (init)="slickInit($event)"
+                  (breakpoint)="breakpoint($event)"
+                  (afterChange)="afterChange($event)"
+                  (beforeChange)="beforeChange($event)">
+                <div ngxSlickItem *ngFor="let slide of slides" class="slide">
+                <img src="{{ slide.img }}" alt="" width="100%">
+                </div>
+               </ngx-slick-carousel>
+  
+               <h1 class="font-settings">
+                
+                {{ item.title }} - {{ item.price | currency }}  / {{ "tax for meeting with administrator"  }}
+              </h1>
+  
+          
+                <br />
+              
+              </mat-card-content>
+          </mat-card>
+         
+          </div>
+        </div>
+      
+          <mat-card > 
+            <div >
+       
+                <br
+              />
+            
+  
+              <div class="informations">
+                <label for="description">{{ item.description }}</label>
+                <br>
+                <br>
+                <br>
+              </div>
+            <div class="reserve">
+              <form [formGroup]="myForm" (ngSubmit)="submitReservation()">
+                <mat-form-field>
+                  <input
+                    matInput
+                    [min]="minDate"
+                    [matDatepicker]="picker"
+                    [matDatepickerFilter]="unavailableDays"
+                    placeholder="Meeting Day"
+                    formControlName="date"
+                    [disabled]="!userState()"
+                  />
+                  <mat-datepicker-toggle
+                    matSuffix
+                    [for]="picker"
+                  ></mat-datepicker-toggle>
+                  <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+               
+                <button
+                  mat-raised-button
+                  color="primary"
+                  [disabled]="myForm.invalid"
+                  class="reservation-settings"
+                >
+                  {{ "Set the meeting"  }}
+                </button>
+              </form>
+  
+  
+            </div>
+  
+            
+        </div>
+        </mat-card>
+      </div>
+      <mat-card> <br /><br /></mat-card>
+    </div>
+  </body>
+  <app-footer></app-footer>

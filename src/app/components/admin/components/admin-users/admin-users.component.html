@@ -1,0 +1,43 @@
+<mat-sidenav-container>
+
+  <mat-sidenav #sidenav>
+    <app-sidenav-admin (closeSideNav)="sidenav.close()"></app-sidenav-admin>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <app-header (SideNavigationToggle)="sidenav.toggle()"></app-header>
+    <app-navtabs-admin></app-navtabs-admin>
+
+    <main>
+      <router-outlet></router-outlet>
+    </main>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+<!-- <mat-toolbar  class="container">Users</mat-toolbar> -->
+
+
+<div class="container">
+  <ul class="responsive-table">
+    <br />
+      <br />
+  <li *ngFor="let user of users" class="table-row">
+    <div class="col col-1" data-label="Name">{{ user.name }}</div>
+    <div class="col col-2" data-label="Email">
+      {{ user.email}}
+    </div>
+   
+    <div class="col col-4 actions" data-label="Edit/Delete">
+     
+      <button
+        mat-button
+        matTooltip="Click to delete this user"
+        color="warn"
+        (click)="deleteUser(user)"
+      >
+        <mat-icon aria-label="Delete">delete</mat-icon>
+      </button>
+    </div>
+  
+  </li>
+  </ul>
+</div>

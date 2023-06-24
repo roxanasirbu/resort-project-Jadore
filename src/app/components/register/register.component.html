@@ -1,0 +1,103 @@
+<mat-sidenav-container>
+
+    <mat-sidenav-content>
+      <app-navtabs-out></app-navtabs-out>
+  
+      <main>
+        <router-outlet></router-outlet>
+      </main>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+  <!-- Mobile -->
+  <div fxShow="true" fxHide.gt-xs="true">
+    <mat-card class="login-card" >
+   
+      <mat-card-header>
+          <mat-card-title >{{"register" | translate}}</mat-card-title>
+          <mat-card-subtitle >{{"explore" | translate}}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+  <div class="container-fluid">
+      <div class="row mt-5">
+          <div class="col"></div>
+          <div class="col-9">
+              <div class="card shadow">
+                  <div class="card-body">
+                      <form>
+                          <div class="mb-3">
+                             <h4 class="text-dark text-muted">{{"register" | translate}}</h4> 
+                          </div>
+                          <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">{{"email" | translate}}</label>
+                            <input type="email" class="form-control" name="email" [(ngModel)]="email">
+                            
+                          </div>
+                          <div class="mb-3">
+                            <label for="exampleInputPassword1" class="form-label">{{"pass" | translate}}</label>
+                            <input type="password" class="form-control" name="password" [(ngModel)]="password">
+                          </div>
+                         
+                          <button type="button" class="btn btn-info" (click)="register()">{{"register" | translate}}</button>
+                          <div class="row">
+                              <div class="col-md-6">
+                                  <a href="/login" style="text-decoration: none;">{{"q" | translate}} <span class="text-danger">{{"logIn" | translate}}</span></a>
+                              </div>
+                             
+                          </div>
+                        </form>
+                  </div>
+              </div>
+          </div>
+          <div class="col"></div> 
+      </div>
+  </div>
+  </mat-card-content>
+  </mat-card>
+  </div>
+  <div fxShow="true" fxHide.lt-sm="true">
+    <!-- -------------------- Desktop ---------------------------- -->
+  <mat-card class="login-card" >
+   
+    <mat-card-header>
+        <mat-card-title class="title">{{"register" | translate}}</mat-card-title>
+        <mat-card-subtitle class="subtitle">{{"explore" | translate}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+<div class="container-fluid">
+    <div class="row mt-5">
+        <div class="col"></div>
+        <div class="col-4">
+            <div class="card shadow">
+                <div class="card-body">
+                    <form>
+                        <div class="mb-3">
+                           <h4 class="text-dark text-muted">{{"register" | translate}}</h4> 
+                        </div>
+                        <div class="mb-3">
+                          <label for="exampleInputEmail1" class="form-label">{{"email" | translate}}</label>
+                          <input type="email" class="form-control" name="email" [(ngModel)]="email">
+                          
+                        </div>
+                        <div class="mb-3">
+                          <label for="exampleInputPassword1" class="form-label">{{"pass" | translate}}</label>
+                          <input type="password" class="form-control" name="password" [(ngModel)]="password">
+                        </div>
+                       
+                        <button type="button" class="btn btn-info" (click)="register()">{{"register" | translate}}</button>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <a href="/login" style="text-decoration: none;">{{"q" | translate}} <span class="text-danger">{{"logIn" | translate}}</span></a>
+                            </div>
+                           
+                        </div>
+                      </form>
+                </div>
+            </div>
+        </div>
+        <div class="col"></div> 
+    </div>
+</div>
+</mat-card-content>
+</mat-card>
+</div>
+<app-footer></app-footer>

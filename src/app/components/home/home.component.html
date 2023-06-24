@@ -1,0 +1,80 @@
+<mat-sidenav-container>
+
+  <mat-sidenav #sidenav>
+    <app-sidenav-list (closeSideNav)="sidenav.close()"></app-sidenav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <app-header (SideNavigationToggle)="sidenav.toggle()"></app-header>
+    <app-navtabs></app-navtabs>
+
+    <main>
+      <router-outlet></router-outlet>
+    </main>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+  
+ 
+   <!-- -------------------- Mobile ---------------------------- -->
+   <div fxShow="true" fxHide.gt-xs="true">
+    <div class="thailand" fxLayout="column" fxLayout="row" fxLayoutAlign="center center">
+      <h1>{{ "welcome" | translate}}</h1>
+    </div>
+    <br>
+    <div>
+      <p style="text-align: center;"class="mobile-description-settings" fxFlex.gt-xs="70" fxFlexOffset.gt-xs="15">
+        <strong> {{"DescriptionHome" | translate}} </strong> <br/>  {{"JadoreDes" | translate}} <br/>  {{"JadoreDes2" | translate}} <br/>  {{"JadoreDes3" | translate}} <br/>  {{"JadoreDes4" | translate}}  <br/>  {{"JadoreDes5" | translate}} 
+      </p>
+    </div>
+    <iframe style="margin-left: 10%;" width="300px"
+    height="182.5px"
+    frameborder="0" src="https://momento360.com/e/uc/94e683af96cf49d7a0785bcf4836c0cc?utm_campaign=embed&utm_source=other&size=medium&display-plan=true"></iframe>
+    <div class="rooms-home-display" fxLayout.xs="column" fxLayoutWrap fxLayoutAlign="center">
+  
+     
+    </div>
+</div>
+<!-- desktop -->
+<div fxShow="true" fxHide.lt-sm="true">
+  
+    <div class="thailand" fxLayout="column" fxLayout="row" fxLayoutAlign="center center">
+      <h1>{{ "welcome" | translate}}</h1>
+
+    </div>
+    <br>
+    <br>
+    <div>
+      <p class="mat-body-1" fxFlex.gt-xs="70" fxFlexOffset.gt-xs="15">
+        <strong> {{"DescriptionHome" | translate}} </strong> 
+      </p>
+    </div>
+   
+    <div class="rooms-home-display" fxLayout.xs="column" fxLayoutWrap fxLayoutAlign="center">
+      <mat-card class="rooms-suites" fxFlex="45%;" fxFlex.sm="100%">
+        <mat-card-header fxLayout="column" fxLayout="row" fxLayoutAlign="center center">
+          <h2>{{"Rooms" | translate}} &amp; {{"Suites" | translate}}</h2>
+        </mat-card-header> 
+        <mat-card-actions fxLayout="column" fxLayout="row" fxLayoutAlign="center center">
+          <button mat-raised-button color="primary" (click)="checkRooms()">{{"Explore" | translate}}</button>
+        </mat-card-actions>  
+      </mat-card>
+      <mat-card class="beach-houses" fxFlex="45%;" fxFlex.sm="100%">
+        <mat-card-header fxLayout="column" fxLayout="row" fxLayoutAlign="center center">
+          <h2> {{"Ballroom" | translate}}</h2>
+        </mat-card-header> 
+        <mat-card-actions fxLayout="column" fxLayout="row" fxLayoutAlign="center center">
+          <button mat-raised-button color="primary" (click)="checkHalls()">{{"Explore" | translate}}</button>
+        </mat-card-actions>  
+      </mat-card>
+     
+    </div>
+    <p class="mat-body-1" style="margin-left: 10%; margin-right: 10%;">{{"JadoreDes" | translate}} <br/>  {{"JadoreDes" | translate}} <br/>  {{"JadoreDes2" | translate}} <br/>  {{"JadoreDes3" | translate}} <br/>  {{"JadoreDes4" | translate}}  <br/>  {{"JadoreDes5" | translate}} </p>
+    <iframe  width="1300px"
+    height="382.5px" style="margin-left: 5%; margin-right: 5%;"
+    frameborder="0" src="https://momento360.com/e/uc/94e683af96cf49d7a0785bcf4836c0cc?utm_campaign=embed&utm_source=other&size=medium&display-plan=true"></iframe>
+ 
+</div>
+  <app-footer></app-footer>
+  
+  

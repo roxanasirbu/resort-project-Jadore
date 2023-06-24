@@ -1,0 +1,279 @@
+<mat-card>
+    <mat-card-title>
+      <div *ngIf="!item">{{"addB" | translate}}</div>
+    </mat-card-title>
+    <mat-card-content [style.overflow]="'auto'" [style.height.px]="'300'">
+      <form
+        [formGroup]="regiForm"
+        (ngSubmit)="onSubmit(regiForm.value)"
+        *ngIf="regiForm"
+      >
+        <table class="table">
+          <tr>
+            <td>
+              <mat-form-field class="field">
+                <input
+                  type="number"
+                  formControlName="Number"
+                  matInput
+                  name="Number"
+                  placeholder="Number"
+                />
+              </mat-form-field>
+              <mat-error>
+                <span
+                  *ngIf="
+                    !regiForm.get('Number').valid &&
+                    regiForm.get('Number').touched
+                  "
+                >
+                {{"num" | translate}}
+                </span>
+              </mat-error>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <mat-form-field class="field">
+                <textarea
+                  formControlName="Title"
+                  matInput
+                  name="Title"
+                  [cdkTextareaAutosize]="true"
+                  [cdkAutosizeMinRows]="2"
+                  [cdkAutosizeMaxRows]="5"
+                  placeholder="Title"
+                ></textarea>
+              </mat-form-field>
+              <mat-error>
+                <span
+                  *ngIf="
+                    !regiForm.get('Title').valid &&
+                    regiForm.get('Title').touched
+                  "
+                >
+                {{"title" | translate}}
+                </span>
+              </mat-error>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <mat-form-field class="field">
+                <textarea
+                  formControlName="Description"
+                  matInput
+                  name="Description"
+                  [cdkTextareaAutosize]="true"
+                  [cdkAutosizeMinRows]="2"
+                  [cdkAutosizeMaxRows]="5"
+                  placeholder="Description"
+                ></textarea>
+              </mat-form-field>
+              <mat-error>
+                <span
+                  *ngIf="
+                    !regiForm.get('Description').valid &&
+                    regiForm.get('Description').touched
+                  "
+                >
+                {{"des" | translate}}
+                </span>
+              </mat-error>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <mat-form-field>
+                <input
+                  type="number"
+                  formControlName="Price"
+                  matInput
+                  name="Price"
+                  placeholder="Tax value for meeting"
+                />
+              </mat-form-field>
+              <mat-error>
+                <span
+                  *ngIf="
+                    !regiForm.get('Price').valid && regiForm.get('Price').touched
+                  "
+                >
+                {{"pr" | translate}}
+                </span>
+              </mat-error>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <!--  -->
+              <mat-form-field class="field">
+                <input
+                  matInput
+                  formControlName="UrlImage1"
+                  placeholder="Url Image1"
+                />
+              </mat-form-field>
+              <mat-error>
+                <span
+                  *ngIf="
+                    !regiForm.get('UrlImage1').valid &&
+                    regiForm.get('UrlImage1').touched
+                  "
+                >
+                {{"img" | translate}}
+                </span>
+              </mat-error>
+              <!--  -->
+              <!--  -->
+             
+              <!--  -->
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <!--  -->
+              <mat-form-field class="field">
+                <input
+                  matInput
+                  formControlName="UrlImage2"
+                  placeholder="Url Image2"
+                />
+              </mat-form-field>
+              <mat-error>
+                <span
+                  *ngIf="
+                    !regiForm.get('UrlImage2').valid &&
+                    regiForm.get('UrlImage2').touched
+                  "
+                >
+                {{"img" | translate}}
+                </span>
+              </mat-error>
+              <!--  -->
+              <!--  -->
+             
+              <!--  -->
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <!--  -->
+              <mat-form-field class="field">
+                <input
+                  matInput
+                  formControlName="UrlImage3"
+                  placeholder="Url Image3"
+                />
+              </mat-form-field>
+              <mat-error>
+                <span
+                  *ngIf="
+                    !regiForm.get('UrlImage3').valid &&
+                    regiForm.get('UrlImage3').touched
+                  "
+                >
+                {{"img" | translate}}
+                </span>
+              </mat-error>
+              <!--  -->
+              <!--  -->
+             
+              <!--  -->
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <!--  -->
+              <mat-form-field class="field">
+                <input
+                  matInput
+                  formControlName="UrlImage4"
+                  placeholder="Url Image4"
+                />
+              </mat-form-field>
+              <mat-error>
+                <span
+                  *ngIf="
+                    !regiForm.get('UrlImage4').valid &&
+                    regiForm.get('UrlImage4').touched
+                  "
+                >
+                {{"img" | translate}}
+                </span>
+              </mat-error>
+              <!--  -->
+              <!--  -->
+             
+              <!--  -->
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <!--  -->
+              <mat-form-field class="field">
+                <input
+                  matInput
+                  formControlName="UrlImage5"
+                  placeholder="Url Image5"
+                />
+              </mat-form-field>
+              <mat-error>
+                <span
+                  *ngIf="
+                    !regiForm.get('UrlImage5').valid &&
+                    regiForm.get('UrlImage5').touched
+                  "
+                >
+                {{"img" | translate}}
+                </span>
+              </mat-error>
+              <!--  -->
+              <!--  -->
+             
+              <!--  -->
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <mat-form-field>
+                <mat-select
+                  placeholder="Select Category"
+                  formControlName="Category"
+                >
+                  <mat-option>-- Select Any --</mat-option>
+                  <mat-option
+                    *ngFor="let category of categories"
+                    [value]="category.key"
+                    >{{ category.label }}</mat-option
+                  >
+                </mat-select>
+              </mat-form-field>
+              <mat-error>
+                <span
+                  *ngIf="
+                    !regiForm.get('Category').valid &&
+                    regiForm.get('Category').touched
+                  "
+                >
+                {{"cat" | translate}}
+                </span>
+              </mat-error>
+            </td>
+          </tr>
+          <tr>
+            <td class="content-center">
+              <button
+                mat-raised-button
+                [disabled]="!regiForm.valid"
+                color="primary"
+              >
+              {{"submit" | translate}}
+              </button>
+            </td>
+          </tr>
+        </table>
+      </form>
+    </mat-card-content>
+  </mat-card>
+  
