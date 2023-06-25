@@ -55,50 +55,44 @@ class="centered-1">
     class="organization"
     [ngClass]="!checkIfAvailable(item.reservationDay) ? 'super-opacity' : ''"
   >
-    <mat-card-title-group>
-      <mat-card-title>
-        <div style="display: flex">
+  <mat-card-title-group>
+    <mat-card-title>
+      <div style="display: flex">
 
-          <div class="img" >
-            <mat-card>
-            <img mat-card-image [src]="item.urlImage1" />
-          </mat-card>
-          </div>
-
-          <div
-            class="paragraphs-settings"
-            [ngClass.lt-sm]="'paragraphs-mobile-settings'"
+        <div
+          class="paragraphs-settings"
+          [ngClass.lt-sm]="'paragraphs-mobile-settings'"
+        >
+          <p class="title-settings">
+          {{  item.title }}
+          </p>
+          <p class="reservationDay-settings">
+            {{ "reservedDay" | translate }}: {{ item.reservationDay }}
+          </p>
+          <p
+            *ngIf="!checkIfAvailable(item.reservationDay)"
+            class="status-settings"
+            style="color: rgb(0, 102, 255)"
           >
-            <p class="title-settings">
-              {{ item.title }}
-            </p>
-            <p class="reservationDay-settings">
-              {{ "reservedDay" | translate }}: {{ item.reservationDay }}
-            </p>
-            <p
-              *ngIf="!checkIfAvailable(item.reservationDay)"
-              class="status-settings"
-              style="color: rgb(0, 255, 0)"
-            >
-              {{ "available" | translate }}
-            </p>
-            <p
-              *ngIf="checkIfAvailable(item.reservationDay)"
-              class="status-settings"
-              style="color: rgb(0, 21, 255)"
-            >
-              {{ "notAv" | translate }}
-            </p>
-          </div>
+            {{ "available" | translate }}
+          </p>
+          <p
+            *ngIf="checkIfAvailable(item.reservationDay)"
+            class="status-settings"
+            style="color: rgb(166, 0, 255)"
+          >
+            {{ "notAv" | translate }}
+          </p>
         </div>
-      </mat-card-title>
-
-      <div fxShow="true" fxHide.lt-sm="true">
-        <p class="price-settings">
-          {{ item.price | currency }}
-        </p>
       </div>
-    </mat-card-title-group>
+    </mat-card-title>
+
+    <div fxShow="true" fxHide.lt-sm="true">
+      <p class="price-settings">
+        {{ item.price | currency }}
+      </p>
+    </div>
+  </mat-card-title-group>
   </mat-card>
  
 </div>

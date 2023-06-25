@@ -37,7 +37,11 @@
               "src/custom-theme.scss",
               "./node_modules/bootstrap/dist/css/bootstrap.min.css",
               "./node_modules/slick-carousel/slick/slick.scss",
-              "./node_modules/slick-carousel/slick/slick-theme.scss"
+              "./node_modules/slick-carousel/slick/slick-theme.scss",
+              "src/assets/css/font-awesome.min.css",
+              "src/assets/css/flaticon.css",
+              "src/assets/css/default.css",
+              "src/assets/css/style.css"
             ],
             "serviceWorker": true,
             "ngswConfigPath": "ngsw-config.json",
